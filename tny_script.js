@@ -22,8 +22,10 @@ document.getElementById("mins").innerHTML = "mm";
 
 document.getElementById("secs").innerHTML = "ss";
 
+function runClock(){
+
 //New variable for date-time
-var currentDay = new Date("May 23, 2018 14:35:05");
+var currentDay = new Date();
 var dateString = currentDay.toLocaleDateString();
 var timeString = currentDay.toLocaleTimeString();
 
@@ -57,3 +59,46 @@ var secsLeft = (minsLeft - Math.floor(minsLeft))*60;
 document.getElementById("secs").textContent = Math.floor(secsLeft);
 
 console.log(daysLeft);
+
+}
+
+function stopClock(){
+    clearInterval(intervalID);
+}
+
+intervalID = setInterval(runClock, 1000);
+runClock();
+
+/** 
+function updateCountdown() {
+   var now = new Date().getTime();
+   var distance = newYear - now;
+ 
+   if (distance > 0) {
+       // Time calculations for days, hours, minutes and seconds
+       var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+       var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+ 
+       // Output the result in the elements with corresponding IDs
+       document.getElementById("days").textContent = days;
+       document.getElementById("hrs").textContent = hours;
+       document.getElementById("mins").textContent = minutes;
+       document.getElementById("secs").textContent = seconds;
+   } else {
+       // If the countdown is over, display "EXPIRED"
+       document.getElementById("days").textContent = "0";
+       document.getElementById("hrs").textContent = "0";
+       document.getElementById("mins").textContent = "0";
+       document.getElementById("secs").textContent = "0";
+   }
+ }
+ 
+ // Update the countdown every second
+ setInterval(updateCountdown, 1000);
+ 
+ // Initial call to display the countdown immediately
+ updateCountdown();
+
+ */
